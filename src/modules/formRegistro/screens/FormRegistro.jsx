@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import '../../../../src/index.css'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
@@ -21,12 +21,12 @@ export default function FormRegistro() {
     resolver: yupResolver(schema)
   }); 
 
-  function onSubmit(data){
-    navigate('/login'), {
-      state: { email : data?.email, password: data?.password }
-    }
-    
-  }
+  function onSubmit(data) {
+    console.log(data);
+    navigate('/login', {
+      state: { email: data.email, password: data.password, name: data.name, lastname: data.lastname, age: data.age, phoneNumber: data.phoneNumber }
+    });
+}
 
   return (
     <>

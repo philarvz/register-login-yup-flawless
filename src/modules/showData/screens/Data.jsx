@@ -1,7 +1,12 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../../../../src/index.css";
 
 export default function Data() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { email, name, lastname, age, phoneNumber } = location.state || {};
+
   return (
     <div className="container">
       <h4 style={{ color: "gray" }}>
@@ -15,16 +20,17 @@ export default function Data() {
       <h2 style={{ marginBottom: 20 }}>Bienvenido a tu perfil</h2>
 
       <div style={{ textAlign: "left" }}>
-        <p><strong>Nombre:</strong> [Nombre del usuario]</p>
-        <p><strong>Apellidos:</strong> [Apellidos del usuario]</p>
-        <p><strong>Edad:</strong> [Edad]</p>
-        <p><strong>Teléfono:</strong> [Teléfono]</p>
-        <p><strong>Correo Electrónico:</strong> [Correo]</p>
+        <p><strong>Nombre:</strong> {name}</p>
+        <p><strong>Apellidos:</strong> {lastname}</p>
+        <p><strong>Edad:</strong> {age}</p>
+        <p><strong>Teléfono:</strong> {phoneNumber}</p>
+        <p><strong>Correo Electrónico:</strong> {email}</p>
       </div>
 
       <button
         className="input"
         style={{ backgroundColor: "rgb(144, 118, 99)", marginTop: 20 }}
+        onClick={() => navigate("/")}
       >
         Cerrar sesión
       </button>
